@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Image {
-    var title:String
+struct Media : Codable {
+    var title: String
     var url:String
+}
+
+struct Image : Codable {
+    
 }
