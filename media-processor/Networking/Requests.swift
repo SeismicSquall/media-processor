@@ -8,10 +8,4 @@
 
 import Foundation
 
-enum Request : String {
-    case mediaList = "https://raw.githubusercontent.com/SeismicSquall/media/master/content.json"
-    
-    var url:URL? {
-        return URL(string: rawValue)
-    }
-}
+

@@ -15,8 +15,8 @@ fileprivate struct MediaCollection : Codable {
 
 class MediaService : NetworkService {
     
-    func get(request:Request = .mediaList, completion: @escaping (Result<[Media]>) -> ()) {
-        NetworkService.get(request: request) { (result:Result<Data>) in
+    func get(request:Request, service:FetchingService = NetworkService(), completion: @escaping (Result<[Media]>) -> ()) {
+        service.get(request: request) { (result:Result<Data>) in
             switch result {
             case .error(let error):
                 completion(.error(error))
@@ -31,6 +31,14 @@ class MediaService : NetworkService {
                 
             }
         }
+    }
+}
+
+enum AppRequests : String {
+    case mediaList = "https://raw.githubusercontent.com/SeismicSquall/media/master/content.json"
+    
+    var url:URL? {
+        return URL(string: rawValue)
     }
 }
 

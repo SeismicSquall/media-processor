@@ -40,3 +40,7 @@ class NetworkService : FetchingService {
     }
 }
 
+protocol Request  {
+    var url:URL? {get}
+}
+

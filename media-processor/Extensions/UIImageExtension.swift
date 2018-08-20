@@ -13,9 +13,13 @@ enum ImageError : Error {
     case invalidImageData
 }
 
+struct GenericRequest : Request {
+    var url:URL?
+}
+
 extension UIImage : Fetchable {
-    static func get(request:Request, service:FetchingService = NetworkService(), completion: @escaping (Result<UIImage>) -> Void) {
-        service.get(request: request) { (result:Result<Data>) in
+    static func get(url:URL, service:FetchingService = NetworkService(), completion: @escaping (Result<UIImage>) -> Void) {
+        service.get(request: GenericRequest(url: url)) { (result:Result<Data>) in
             switch result {
             case .error(let error):
                 completion(.error(error))

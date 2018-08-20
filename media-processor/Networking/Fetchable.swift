@@ -10,5 +10,5 @@ import Foundation
 
 protocol Fetchable {
     associatedtype DataType
-    static func get(request:Request, service:FetchingService, completion: @escaping (Result<DataType>) -> Void)
+    static func get(url:URL, service:FetchingService, completion: @escaping (Result<DataType>) -> Void)
 }
