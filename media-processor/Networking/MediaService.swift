@@ -13,10 +13,10 @@ fileprivate struct MediaCollection : Codable {
     let media:[Media]
 }
 
-class MediaService : RequestFetcher {
+class MediaService : NetworkService {
     
     func get(request:Request = .mediaList, completion: @escaping (Result<[Media]>) -> ()) {
-        super.get(request: request) { (result:Result<Data>) in
+        NetworkService.get(request: request) { (result:Result<Data>) in
             switch result {
             case .error(let error):
                 completion(.error(error))

@@ -14,9 +14,8 @@ enum ImageError : Error {
 }
 
 extension UIImage : Fetchable {
-    func get(request:Request, completion: @escaping (Result<UIImage>) -> Void) {
-        let dataFetcher = NetworkService()
-        dataFetcher.get(request: request) { (result:Result<Data>) in
+    static func get(request:Request, service:FetchingService = NetworkService(), completion: @escaping (Result<UIImage>) -> Void) {
+        service.get(request: request) { (result:Result<Data>) in
             switch result {
             case .error(let error):
                 completion(.error(error))

@@ -20,12 +20,11 @@ enum NetworkServiceError : Error {
     case invalidData
 }
 
-protocol Fetchable {
-    associatedtype DataType
-    func get(request:Request, completion: @escaping (Result<DataType>) -> Void)
+protocol FetchingService {
+    func get(request:Request, completion: @escaping (Result<Data>) -> Void)
 }
 
-class NetworkService : Fetchable {
+class NetworkService : FetchingService {
     func get(request:Request, completion: @escaping (Result<Data>) -> Void) {
         guard let url = request.url else {return}
         URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in

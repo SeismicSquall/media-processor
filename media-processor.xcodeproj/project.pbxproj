@@ -18,6 +18,9 @@
 		3A3E84AA21222AE30008FB58 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E84A821222AE30008FB58 /* CollectionViewModel.swift */; };
 		3A3E84AB21222AE30008FB58 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E84A821222AE30008FB58 /* CollectionViewModel.swift */; };
 		3A557698212A2E0000CDCA4F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A557697212A2E0000CDCA4F /* UIImageExtension.swift */; };
+		3A55769A212A3C1300CDCA4F /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A557699212A3C1300CDCA4F /* Fetchable.swift */; };
+		3A55769B212A3C1300CDCA4F /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A557699212A3C1300CDCA4F /* Fetchable.swift */; };
+		3A55769C212A3C1300CDCA4F /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A557699212A3C1300CDCA4F /* Fetchable.swift */; };
 		3A7C4ED821261EA300070476 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C4ED721261EA300070476 /* Requests.swift */; };
 		3A7C4ED921261EA300070476 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C4ED721261EA300070476 /* Requests.swift */; };
 		3A7C4EDA21261EA300070476 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C4ED721261EA300070476 /* Requests.swift */; };
@@ -58,6 +61,7 @@
 		3A3E84A4212229F90008FB58 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		3A3E84A821222AE30008FB58 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		3A557697212A2E0000CDCA4F /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		3A557699212A3C1300CDCA4F /* Fetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
 		3A7C4ED721261EA300070476 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		3A7C4EDB21261F8500070476 /* ServiceCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCore.swift; sourceTree = "<group>"; };
 		3A7C4EDF212707AE00070476 /* MediaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				3A7C4ED721261EA300070476 /* Requests.swift */,
 				3A7C4EDB21261F8500070476 /* ServiceCore.swift */,
 				3A7C4EDF212707AE00070476 /* MediaService.swift */,
+				3A557699212A3C1300CDCA4F /* Fetchable.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				3A7C4EDC21261F8500070476 /* ServiceCore.swift in Sources */,
 				3A3E84A5212229F90008FB58 /* Media.swift in Sources */,
 				3A7C4EE0212707AE00070476 /* MediaService.swift in Sources */,
+				3A55769A212A3C1300CDCA4F /* Fetchable.swift in Sources */,
 				3A3E84A921222AE30008FB58 /* CollectionViewModel.swift in Sources */,
 				3A3E849E212227BB0008FB58 /* CollectionViewController.swift in Sources */,
 				3A87D13E2120EFE00090CF42 /* SampleCode.xcdatamodeld in Sources */,
@@ -345,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A55769B212A3C1300CDCA4F /* Fetchable.swift in Sources */,
 				3A3E84AA21222AE30008FB58 /* CollectionViewModel.swift in Sources */,
 				3A3E84A2212228E70008FB58 /* CollectionViewCell.swift in Sources */,
 				3A7C4EE1212707AE00070476 /* MediaService.swift in Sources */,
@@ -359,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A55769C212A3C1300CDCA4F /* Fetchable.swift in Sources */,
 				3A3E84AB21222AE30008FB58 /* CollectionViewModel.swift in Sources */,
 				3A3E84A3212228E70008FB58 /* CollectionViewCell.swift in Sources */,
 				3A7C4EE2212707AE00070476 /* MediaService.swift in Sources */,

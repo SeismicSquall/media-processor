@@ -16,3 +16,12 @@ struct Media : Codable {
 struct Image : Codable {
     
 }
+
+extension Media : Fetchable {
+    typealias DataType = Media
+    
+    static func get(request: Request, service:FetchingService = NetworkService(), completion: @escaping (Result<Media>) -> Void) {
+        
+    }
+    
+}
