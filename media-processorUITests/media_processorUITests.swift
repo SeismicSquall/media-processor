@@ -8,7 +8,7 @@
 
 import XCTest
 
-class SampleCodeUITests: XCTestCase {
+class media_processorUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

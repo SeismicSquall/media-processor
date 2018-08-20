@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import SampleCode
+@testable import media_processor
 
-class SampleCodeTests: XCTestCase {
+class media_processorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
