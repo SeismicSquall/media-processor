@@ -8,20 +8,11 @@
 
 import Foundation
 
-struct Media : Codable {
+protocol Fetchable {
+    var url: String {get set}
+}
+
+struct Image : Codable, Fetchable {
+    var url: String
     var title: String
-    var url:String
-}
-
-struct Image : Codable {
-    
-}
-
-extension Media : Fetchable {
-    static func get(url: URL, service: FetchingService, completion: @escaping (Result<Media>) -> Void) {
-        
-    }
-    
-    typealias DataType = Media
-    
 }

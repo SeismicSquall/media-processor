@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol Fetchable {
-    associatedtype DataType
-    static func get(url:URL, service:FetchingService, completion: @escaping (Result<DataType>) -> Void)
+protocol Fetcher {
+    associatedtype DataType:Codable
+    func get(url:URL, service:FetchingService, completion: @escaping (Result<[DataType]>) -> Void)
 }
+
+

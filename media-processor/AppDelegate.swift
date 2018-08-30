@@ -13,23 +13,10 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var c:CollectionViewController<CollectionViewCell<Image>,Image>!
+    //var c:CollectionViewController<ImageCollectionViewCell,Image>!
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [/*UIApplication.LaunchOptionsKey*/UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
-        c = CollectionViewController<CollectionViewCell<Image>,Image>(collectionViewLayout: UICollectionViewLayout.init())
-        c.view.bounds = self.window?.bounds ?? CGRect(x: 0, y: 0, width: 100, height: 100)
-        if let vc = c {
-            vc.collectionView?.backgroundColor = .red
-        }
-        
-        window?.rootViewController = c
-        window?.makeKeyAndVisible()
-        
         return true
     }
 

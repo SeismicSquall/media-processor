@@ -10,11 +10,10 @@ import Foundation
 
 
 
-enum Result<T> {
+public enum Result<T> {
     case success(T)
     case error(Error)
 }
-typealias DefaultResult = Result<Data>
 
 enum NetworkServiceError : Error {
     case invalidData
@@ -24,8 +23,10 @@ protocol FetchingService {
     func get(request:Request, completion: @escaping (Result<Data>) -> Void)
 }
 
-class NetworkService : FetchingService {
-    func get(request:Request, completion: @escaping (Result<Data>) -> Void) {
+public class NetworkService : FetchingService {
+    public init() {}
+    
+    public func get(request:Request, completion: @escaping (Result<Data>) -> Void) {
         guard let url = request.url else {return}
         URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in
             if let error = error {
@@ -40,7 +41,9 @@ class NetworkService : FetchingService {
     }
 }
 
-protocol Request  {
+
+
+public protocol Request  {
     var url:URL? {get}
 }
 

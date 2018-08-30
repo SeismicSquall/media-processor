@@ -10,35 +10,32 @@ import Foundation
 import UIKit
 
 fileprivate struct MediaCollection : Codable {
-    let media:[Media]
+    let media:[Image]
 }
 
 class MediaService : NetworkService {
     
-    func get(request:Request, service:FetchingService = NetworkService(), completion: @escaping (Result<[Media]>) -> ()) {
+    func get(request:Request, service:FetchingService = NetworkService(), completion: @escaping (Result<[Image]>) -> ()) {
         service.get(request: request) { (result:Result<Data>) in
-            switch result {
-            case .error(let error):
-                completion(.error(error))
-            case .success(let mediaJSON):
-                do {
-                    let media = try JSONDecoder().decode(MediaCollection.self, from: mediaJSON)
-                    completion(.success(media.media))
+            DispatchQueue.main.async {
+                switch result {
+                case .error(let error):
+                    completion(.error(error))
+                case .success(let mediaJSON):
+                    do {
+                        let media = try JSONDecoder().decode(MediaCollection.self, from: mediaJSON)
+                        completion(.success(media.media))
+                    }
+                    catch {
+                        completion(.error(NetworkServiceError.invalidData))
+                        print("json error")
+                        //completion
+                    }
+                    
                 }
-                catch {
-                    //completion
-                }
-                
             }
+            
         }
-    }
-}
-
-enum AppRequests : String {
-    case mediaList = "https://raw.githubusercontent.com/SeismicSquall/media/master/content.json"
-    
-    var url:URL? {
-        return URL(string: rawValue)
     }
 }
 
