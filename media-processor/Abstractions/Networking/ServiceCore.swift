@@ -20,15 +20,15 @@ enum NetworkServiceError : Error {
 }
 
 protocol FetchingService {
-    func get(request:Request, completion: @escaping (Result<Data>) -> Void)
+    func get(request:Request, completion: @escaping (Result<Data>) -> Void) -> URLSessionDataTask?
 }
 
 public class NetworkService : FetchingService {
     public init() {}
     
-    public func get(request:Request, completion: @escaping (Result<Data>) -> Void) {
-        guard let url = request.url else {return}
-        URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in
+    public func get(request:Request, completion: @escaping (Result<Data>) -> Void) -> URLSessionDataTask? {
+        guard let url = request.url else {return nil}
+        let task = URLSession.shared.dataTask(with: url) { (data:Data?, response:URLResponse?, error:Error?) in
             if let error = error {
                 completion(.error(error))
             }
@@ -37,7 +37,9 @@ public class NetworkService : FetchingService {
                 return
             }
             completion(.success(data))
-        }.resume()
+        }
+        task.resume()
+        return task
     }
 }
 

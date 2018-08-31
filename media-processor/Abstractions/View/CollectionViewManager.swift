@@ -8,20 +8,24 @@
 
 import UIKit
 protocol CollectionViewDataManager {
-    associatedtype T
-    associatedtype Cell:Configurable
-    var models:[[T]] {get set}
+    associatedtype ModelType
+    associatedtype CellType:Configurable
+    var models:[[ModelType]] {get set}
 }
 
 
-public class CollectionViewManager<T, Cell:UICollectionViewCell> :
+public class CollectionViewManager<ModelType, CellType:UICollectionViewCell> :
     NSObject, CollectionViewDataManager, UICollectionViewDataSource, UICollectionViewDelegate
-    where Cell:Configurable, Cell.T == T
+    where CellType:Configurable, CellType.ModelType == ModelType
 {
-    var models: [[T]]
+    var models: [[ModelType]] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     let collectionView:UICollectionView
     
-    public init(collectionView:UICollectionView, models:[[T]]) {
+    public init(collectionView:UICollectionView, models:[[ModelType]] = [[ModelType]]()) {
         self.collectionView = collectionView
         self.models = models
         super.init()
@@ -43,10 +47,13 @@ public class CollectionViewManager<T, Cell:UICollectionViewCell> :
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.Identifier, for: indexPath) as? Cell else {
-            fatalError("Expected compile-time-resolved type \(String(describing: Cell.self))")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.Identifier, for: indexPath) as? CellType else {
+            fatalError("Expected compile-time-resolved type \(String(describing: CellType.self))")
         }
-        cell.configure(model: models[indexPath.section][indexPath.row])
+        guard let model = models[safe: indexPath.section]![safe: indexPath.row] else {
+            fatalError("Invalid cell index")
+        }
+        cell.configure(model: model)
         return cell
     }
     

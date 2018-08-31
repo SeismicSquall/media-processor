@@ -18,8 +18,8 @@ struct GenericRequest : Request {
 }
 
 extension UIImage {
-    static func get(url:URL, service:NetworkService = NetworkService(), completion: @escaping (Result<UIImage>) -> Void) {
-        service.get(request: GenericRequest(url: url)) { (result:Result<Data>) in
+    static func get(url:URL, service:NetworkService = NetworkService(), completion: @escaping (Result<UIImage>) -> Void) -> URLSessionDataTask? {
+        let task = service.get(request: GenericRequest(url: url)) { (result:Result<Data>) in
             DispatchQueue.main.async {
                 switch result {
                 case .error(let error):
@@ -27,12 +27,13 @@ extension UIImage {
                 case .success(let data):
                     guard let image = UIImage(data: data) else {
                         completion(.error(ImageError.invalidImageData))
-                        return
+                        return 
                     }
                     completion(.success(image))
                 }
             }
             
         }
+        return task
     }
 }

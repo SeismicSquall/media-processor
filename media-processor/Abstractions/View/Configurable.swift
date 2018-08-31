@@ -9,10 +9,10 @@
 import Foundation
 
 public protocol Configurable {
-    associatedtype T
+    associatedtype ModelType
     static var Identifier:String {get}
     
-    func configure(model:T)
+    func configure(model:ModelType)
 }
 
 public extension Configurable {
