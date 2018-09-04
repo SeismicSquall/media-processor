@@ -16,7 +16,7 @@ fileprivate struct MediaCollection : Codable {
 class MediaService : NetworkService {
     
     func get(request:Request, service:FetchingService = NetworkService(), completion: @escaping (Result<[Image]>) -> ()) {
-        service.get(request: request) { (result:Result<Data>) in
+        let _ = service.get(request: request) { (result:Result<Data>) in
             DispatchQueue.main.async {
                 switch result {
                 case .error(let error):

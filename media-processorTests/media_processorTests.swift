@@ -7,13 +7,32 @@
 //
 
 import XCTest
+import Foundation
 @testable import media_processor
 
+enum MockRequest:String,Request {
+    case mediaList = "media.json"
+    
+    var url: URL? {
+        return Bundle.main.url(forResource: rawValue, withExtension: "")
+    }
+}
+
+
+
 class media_processorTests: XCTestCase {
+    
+    var networkService = NetworkService()
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+    
+    func testService() {
+        let _ = networkService.get(request: MockRequest.mediaList) { (result:Result<Data>) in
+            
+        }
     }
     
     override func tearDown() {

@@ -15,7 +15,10 @@ protocol CollectionViewDataManager {
 
 
 public class CollectionViewManager<ModelType, CellType:UICollectionViewCell> :
-    NSObject, CollectionViewDataManager, UICollectionViewDataSource, UICollectionViewDelegate
+    NSObject,
+    CollectionViewDataManager,
+    UICollectionViewDataSource,
+    UICollectionViewDelegate
     where CellType:Configurable, CellType.ModelType == ModelType
 {
     var models: [[ModelType]] {
