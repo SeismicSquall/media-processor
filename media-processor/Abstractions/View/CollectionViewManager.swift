@@ -13,6 +13,10 @@ protocol CollectionViewDataManager {
     var models:[[ModelType]] {get set}
 }
 
+protocol CollectionViewManagerActivityDelegate:class {
+    func fetchResource(indexPath:IndexPath)
+    func didSelectItemAtIndexPath(indexPath:IndexPath)
+}
 
 public class CollectionViewManager<ModelType, CellType:UICollectionViewCell> :
     NSObject,
@@ -21,6 +25,7 @@ public class CollectionViewManager<ModelType, CellType:UICollectionViewCell> :
     UICollectionViewDelegate
     where CellType:Configurable, CellType.ModelType == ModelType
 {
+    weak var delegate:CollectionViewManagerActivityDelegate?
     var models: [[ModelType]] {
         didSet {
             collectionView.reloadData()
@@ -57,7 +62,16 @@ public class CollectionViewManager<ModelType, CellType:UICollectionViewCell> :
             fatalError("Invalid cell index")
         }
         cell.configure(model: model)
+        delegate?.fetchResource(indexPath: indexPath)
         return cell
+    }
+    
+    func cellForItem(indexPath:IndexPath) -> CellType? {
+        return collectionView.cellForItem(at: indexPath) as? CellType
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectItemAtIndexPath(indexPath: indexPath)
     }
     
     

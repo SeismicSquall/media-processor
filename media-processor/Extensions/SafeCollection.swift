@@ -13,3 +13,14 @@ extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+extension Collection
+    where Element: Collection, Index == Int, Element.Index == Int
+{
+    subscript (indexPath indexPath:IndexPath) -> Element.Element? {
+        guard let subcollection = self[safe: indexPath.section] else {return nil}
+        let el = subcollection[safe: indexPath.row ]
+        return el
+ 
+    }
+}

@@ -10,43 +10,70 @@ import Foundation
 import UIKit
 
 protocol ListViewModelDelegate {
-    func didRecieveMediaList(imageModels:[[Image]])
     func displayError(error:Error)
 }
 
-class ListViewModel {
+class ListViewModel:CollectionViewManagerActivityDelegate {
     
     var delegate:ListViewModelDelegate?
     let collectionViewManager:CollectionViewManager<Image,ImageCell>
     let mediaListFetcher = MediaService()
-    var imageModels:[[Image]]?
+    var images = [[UIImage]]()
     var isDownloading = false
     
     init(collectionView:UICollectionView) {
         collectionViewManager = CollectionViewManager<Image,ImageCell>(collectionView: collectionView)
+        collectionViewManager.delegate = self
         initialize()
     }
     
+    
     private func initialize() {
-        imageModels = getImageModels()
     }
     
-    func getImageModels(forceDownload:Bool = false) -> [[Image]]? {
-        if (imageModels == nil && isDownloading == false) || forceDownload == true {
+    func fetchResource(indexPath: IndexPath) {
+        if let image = image(forIndex: indexPath) {
+            guard let cell = collectionViewManager.cellForItem(indexPath: indexPath) else {return}
+            cell.imageView.image = image
+        }
+    }
+    
+    func didSelectItemAtIndexPath(indexPath: IndexPath) {
+        
+    }
+    
+    func getImageModels(forceDownload:Bool = false) {
+        if (collectionViewManager.models.count == 0 && isDownloading == false) || forceDownload == true {
             mediaListFetcher.get(request: AppRequests.mediaList) { [weak self] (result:Result<[Image]>) in
                 guard let ws = self else {return}
                 switch result {
                 case .success(let images):
-                    ws.imageModels = [images]
-                    ws.delegate?.didRecieveMediaList(imageModels: [images])
+                    //ws.delegate?.didRecieveMediaList(imageModels: [images])
+                    ws.collectionViewManager.models = [images]
                 case .error(let error):
                     ws.delegate?.displayError(error: error)
                 }
             }
-            return nil
         }
-        else {
-            return imageModels
+    }
+    
+    func image(forIndex indexPath:IndexPath) -> UIImage? {
+        if let image = images[indexPath: indexPath] {
+            return image
         }
+        guard let model = collectionViewManager.models[indexPath: indexPath] else {return nil}
+        let _ = UIImage.get(url: URL(string: model.url)!) { [weak self] (result:Result<UIImage>) in
+            guard let ws = self else { return }
+            switch result {
+            case .success(let image):
+                guard let cell = ws.collectionViewManager.cellForItem(indexPath: indexPath) else {return}
+                cell.imageView.image = image
+                print("success")
+            case .error(let error):
+                ws.delegate?.displayError(error: error)
+                print("fail")
+            }
+        }
+        return nil
     }
 }

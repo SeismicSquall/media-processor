@@ -8,31 +8,22 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
-
-    
+class ListViewController: UIViewController, ListViewModelDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
-    var collectionManager:CollectionViewManager<Image,ImageCell>?
-    let mediaListFetcher = MediaService()
+    
+    var listViewModel:ListViewModel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mediaListFetcher.get(request: AppRequests.mediaList) { [weak self] (result:Result<[Image]>) in
-            guard let ws = self else { return }
-            switch result {
-            case .success(let images):
-                print ("got images")
-                ws.collectionManager = CollectionViewManager<Image,ImageCell>(collectionView: ws.collectionView, models: [images])
-                
-            case .error(let error):
-                print (error)
-            }
- 
-        }
-
-        // Do any additional setup after loading the view.
+        listViewModel = ListViewModel(collectionView: collectionView)
+        listViewModel.getImageModels()
+        
+    }
+    
+    func displayError(error: Error) {
+        //TODO: Display Error
     }
     
 

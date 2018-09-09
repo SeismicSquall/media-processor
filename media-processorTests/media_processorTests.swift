@@ -8,10 +8,10 @@
 
 import XCTest
 import Foundation
-@testable import media_processor
+//@testable import media_processor
 
 enum MockRequest:String,Request {
-    case mediaList = "media.json"
+    case mediaList = "content.json"
     
     var url: URL? {
         return Bundle.main.url(forResource: rawValue, withExtension: "")
@@ -22,7 +22,7 @@ enum MockRequest:String,Request {
 
 class media_processorTests: XCTestCase {
     
-    var networkService = NetworkService()
+    var networkService = MediaService()
     
     override func setUp() {
         super.setUp()
@@ -30,8 +30,13 @@ class media_processorTests: XCTestCase {
     }
     
     func testService() {
-        let _ = networkService.get(request: MockRequest.mediaList) { (result:Result<Data>) in
-            
+        let _ = networkService.get(request: MockRequest.mediaList) { (result:Result<[Image]>) in
+            switch result {
+            case .success(let images):
+                XCTAssert(images.count > 0)
+            case .error:
+                XCTAssert(false)
+            }
         }
     }
     

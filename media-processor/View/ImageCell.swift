@@ -15,15 +15,5 @@ class ImageCell: UICollectionViewCell,Configurable {
     
     func configure(model: Image) {
         titleLabel.text = model.title
-        let task = UIImage.get(url: URL(string: model.url)!) { [weak self] (result:Result<UIImage>) in
-            guard let ws = self else { return }
-            switch result {
-            case .success(let image):
-                ws.imageView.image = image
-                print("success")
-            case .error:
-                print("fail")
-            }
-        }
     }
 }
