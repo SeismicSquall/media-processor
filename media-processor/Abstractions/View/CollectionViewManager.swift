@@ -70,6 +70,13 @@ public class CollectionViewManager<ModelType, CellType:UICollectionViewCell> :
         return collectionView.cellForItem(at: indexPath) as? CellType
     }
     
+    func visibleCellForItem(indexPath:IndexPath) -> CellType? {
+        if collectionView.indexPathsForVisibleItems.contains(indexPath) {
+            return collectionView.cellForItem(at: indexPath) as? CellType
+        }
+        return nil
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectItemAtIndexPath(indexPath: indexPath)
     }

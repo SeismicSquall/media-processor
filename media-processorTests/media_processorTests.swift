@@ -26,6 +26,10 @@ class media_processorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        let a = ["a"]
+        let b:[String] = a.map { (s) -> String in
+            return ""
+        }
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     

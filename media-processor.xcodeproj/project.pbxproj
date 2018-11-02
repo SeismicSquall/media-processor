@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0E24502151238E00FADD3D /* FFTProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E244F2151238E00FADD3D /* FFTProcessor.swift */; };
+		3A0E24512151238E00FADD3D /* FFTProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E244F2151238E00FADD3D /* FFTProcessor.swift */; };
+		3A0E24522151238E00FADD3D /* FFTProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E244F2151238E00FADD3D /* FFTProcessor.swift */; };
 		3A1E46F5213861DA00339784 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A557697212A2E0000CDCA4F /* UIImageExtension.swift */; };
 		3A1E46F6213861DB00339784 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A557697212A2E0000CDCA4F /* UIImageExtension.swift */; };
 		3A1E46F72138696C00339784 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A31433221382B29003CD448 /* ListViewController.swift */; };
@@ -75,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A0E244F2151238E00FADD3D /* FFTProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTProcessor.swift; sourceTree = "<group>"; };
 		3A1E46F9213885A200339784 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		3A1E46FE213EAE3400339784 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = content.json; path = ../../../media/content.json; sourceTree = "<group>"; };
 		3A31432221380E7A003CD448 /* SafeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeCollection.swift; sourceTree = "<group>"; };
@@ -128,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A0E244E2151236100FADD3D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3A0E244F2151238E00FADD3D /* FFTProcessor.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		3A1E46FD213EADE700339784 /* TestAssets */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +233,7 @@
 		3A87D1342120EFE00090CF42 /* media-processor */ = {
 			isa = PBXGroup;
 			children = (
+				3A0E244E2151236100FADD3D /* Utility */,
 				3A4F218721384D23004FF646 /* Storyboards */,
 				3A3143262138145A003CD448 /* Abstractions */,
 				3A557696212A2DEE00CDCA4F /* Extensions */,
@@ -419,6 +432,7 @@
 				3A3E84A5212229F90008FB58 /* Media.swift in Sources */,
 				3A57AB1C213851BC008B3A2E /* ImageCell.swift in Sources */,
 				3A7C4EE0212707AE00070476 /* MediaService.swift in Sources */,
+				3A0E24502151238E00FADD3D /* FFTProcessor.swift in Sources */,
 				3A55769A212A3C1300CDCA4F /* Fetcher.swift in Sources */,
 				3AD18F542136F31B00086EA7 /* CollectionViewManager.swift in Sources */,
 				3A57AB1821384EB7008B3A2E /* Configurable.swift in Sources */,
@@ -437,6 +451,7 @@
 				3A31432B213817AD003CD448 /* Requests.swift in Sources */,
 				3A1E46F72138696C00339784 /* ListViewController.swift in Sources */,
 				3A7C4EE1212707AE00070476 /* MediaService.swift in Sources */,
+				3A0E24512151238E00FADD3D /* FFTProcessor.swift in Sources */,
 				3A1E46F5213861DA00339784 /* UIImageExtension.swift in Sources */,
 				3A57AB1921384EB7008B3A2E /* Configurable.swift in Sources */,
 				3A3E84A6212229F90008FB58 /* Media.swift in Sources */,
@@ -457,6 +472,7 @@
 				3A31432C213817AD003CD448 /* Requests.swift in Sources */,
 				3A1E46F82138696D00339784 /* ListViewController.swift in Sources */,
 				3A7C4EE2212707AE00070476 /* MediaService.swift in Sources */,
+				3A0E24522151238E00FADD3D /* FFTProcessor.swift in Sources */,
 				3A1E46F6213861DB00339784 /* UIImageExtension.swift in Sources */,
 				3A57AB1A21384EB7008B3A2E /* Configurable.swift in Sources */,
 				3A3E84A7212229F90008FB58 /* Media.swift in Sources */,

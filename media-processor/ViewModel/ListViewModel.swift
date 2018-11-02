@@ -66,7 +66,7 @@ class ListViewModel:CollectionViewManagerActivityDelegate {
             guard let ws = self else { return }
             switch result {
             case .success(let image):
-                guard let cell = ws.collectionViewManager.cellForItem(indexPath: indexPath) else {return}
+                guard let cell = ws.collectionViewManager.visibleCellForItem(indexPath: indexPath) else {return}
                 cell.imageView.image = image
                 print("success")
             case .error(let error):
